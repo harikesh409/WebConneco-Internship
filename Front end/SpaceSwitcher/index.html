@@ -535,6 +535,12 @@
 mark {
 	background: #fff000;
 }
+.scrollable-menu {
+    height: auto;
+    max-height: 80vh;
+    overflow-x: hidden;
+		overflow-y:auto;
+}
 </style>
 </head>
 <body>
@@ -554,7 +560,7 @@ mark {
 						<form class="form-inline my-2 mx-2 my-lg-0">
 							<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" autocomplete="off">
     					</form>
-							<ul class="list-group" id="results">
+							<ul class="list-group scrollable-menu" id="results">
 
 							</ul>
 					</div>
@@ -592,6 +598,12 @@ mark {
 			if(e.which === 40) {
 				$("#results a").first().removeAttr('style');
 				$.tabNext();
+			}
+		});
+		$("nav").keyup(function (e) {
+			if(e.which === 38) {
+				console.log("up");
+				$.tabPrev();
 			}
 		});
 	});
